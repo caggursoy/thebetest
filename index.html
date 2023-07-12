@@ -24,11 +24,47 @@ document.querySelector("#activateButton").addEventListener('click', bootstrapThe
 
 <html>
   <pre data-executable="true" data-language="python">
-    %matplotlib inline
-    import numpy as np
-    import matplotlib.pyplot as plt
-    x = np.linspace(0,10)
-    plt.plot(x, np.sin(x))
-    plt.plot(x, np.cos(x))
+    import ipycytoscape
+    data = {
+      'nodes': [
+          { 'data': { 'id': 'desktop', 'name': 'Cytoscape', 'href': 'http://cytoscape.org' } },
+          { 'data': { 'id': 'a', 'name': 'Grid', 'href': 'http://cytoscape.org' } },
+          { 'data': { 'id': 'b', 'name': 'Cola', 'href': 'http://cytoscape.org' } },
+          { 'data': { 'id': 'c', 'name': 'Popper', 'href': 'http://cytoscape.org' } },
+          { 'data': { 'id': 'js', 'name': 'Cytoscape.js', 'href': 'http://js.cytoscape.org' } }
+      ],
+      'edges': [
+          {'data': { 'source': 'desktop', 'target': 'js' }},
+          {'data': { 'source': 'a', 'target': 'b' }},
+          {'data': { 'source': 'a', 'target': 'c' }},
+          {'data': { 'source': 'b', 'target': 'c' }},
+          {'data': { 'source': 'js', 'target': 'b' }}
+      ]
+    }
+    cytoscapeobj = ipycytoscape.CytoscapeWidget()
+    cytoscapeobj.graph.add_graph_from_json(data)
+    cytoscapeobj.set_style([{
+      'selector': 'node',
+      'css': {
+          'content': 'data(name)',
+          'text-valign': 'center',
+          'color': 'white',
+          'text-outline-width': 2,
+          'text-outline-color': 'green',
+          'background-color': 'green'
+      }
+      },
+      {
+      'selector': ':selected',
+      'css': {
+          'background-color': 'black',
+          'line-color': 'black',
+          'target-arrow-color': 'black',
+          'source-arrow-color': 'black',
+          'text-outline-color': 'black'
+      }}
+      ])
+    cytoscapeobj
+
   </pre>
 </html>
