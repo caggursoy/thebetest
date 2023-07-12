@@ -1,13 +1,27 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
 <script type="text/x-thebe-config">
   {
     requestKernel: true,
     binderOptions: {
-      repo: "binder-examples/requirements",
+      repo: "QuantStack/ipycytoscape",
+      ref: "1.2.0",
+      repoProvider: "github",
     },
-    mountActivateWidget: true,
-    mountStatusWidget: true
   }
 </script>
-<div class="thebe-activate" />
-<div class="thebe-status" />
 <script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+
+<button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
+  Activate
+</button>
+<script>
+var bootstrapThebe = function() {
+    thebelab.bootstrap();
+}
+document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
+</script>
+
+<html>
+  <pre data-executable="true" data-language="python"></pre>
+</html>
