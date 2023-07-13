@@ -2,10 +2,10 @@
 
 <script type="text/x-thebe-config">
   {
-    requestKernel: true,
+    requestKernel: false,
     binderOptions: {
-      repo: "QuantStack/ipycytoscape",
-      ref: "1.2.0",
+      repo: "caggursoy/thebetest",
+      ref: "master",
       repoProvider: "github",
     },
   }
@@ -25,6 +25,7 @@ document.querySelector("#activateButton").addEventListener('click', bootstrapThe
 <html>
   <pre data-executable="true" data-language="python">
 # Some more prerequisites, just run this
+%pip install ipycytoscape --quiet
 import networkx as nx
 import pandas as pd
 import json
