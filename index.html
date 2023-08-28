@@ -100,7 +100,10 @@ def const_graph(nodes_df, edges_df, init):
     data_graph = json.dumps(total_graph_dict)
     json_to_python = json.loads(data_graph)
     # result_cyto = CytoscapeWidget()
-    #cyto_graph.graph.clear()
+    # for some reason ipycytoscape's function is not callable, so calling it manually
+    cyto_graph.graph.nodes.clear()
+    cyto_graph.graph.edges.clear()
+    cyto_graph.graph._adj.clear()
     cyto_graph.graph.add_graph_from_json(json_to_python)
     cyto_graph.set_style(style_elements)
     # also save the initial json to a file
@@ -122,7 +125,10 @@ def const_graph(nodes_df, edges_df, init):
 # reset the graph
 def res_graph(node):
     with out:
-        #cyto_graph.graph.clear()
+        # for some reason ipycytoscape's function is not callable, so calling it manually
+        cyto_graph.graph.nodes.clear()
+        cyto_graph.graph.edges.clear()
+        cyto_graph.graph._adj.clear()
         const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_nodes['subgraph'] == 'initial'], init=True)
 
 def log_clicks(node):
