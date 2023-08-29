@@ -21,9 +21,13 @@ var bootstrapThebe = function() {
 }
 document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
 </script>
-
+<style>
+pre{
+    display: none;
+}
+</style>
 <html>
-  <pre data-executable="true" data-language="python">
+  <pre hidden data-executable="true" data-language="python" data-readonly="true">
 # Some more prerequisites, just run this
 import networkx as nx
 import pandas as pd
@@ -138,7 +142,7 @@ def log_clicks(node):
         if len(df_edges[new_nodes]) == 0 or len(df_nodes[new_nodes]) == 0:
             print('Empty subgraph, resetting view...')
             res_graph(node)
-  
+
 
 # instantiate an jupyternotebook output
 out = Output()
